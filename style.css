@@ -1,0 +1,182 @@
+/*custom font*/
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300&display=swap) format('truetype');
+}
+
+/*basic reset*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f7f7f7;
+}
+
+/*form styles*/
+#wp_booking_process {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+#wp_booking_process fieldset {
+  background: #f7faff;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgb(210 199 199 / 40%);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  /*stacking fieldsets above each other*/
+  position: absolute;
+  height: 400px
+}
+
+/*Hide all except first fieldset*/
+#wp_booking_process fieldset:not(:first-of-type) {
+  display: none;
+}
+
+/*inputs*/
+#wp_booking_process input,
+#wp_booking_process textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2c3e50;
+  font-size: 13px;
+}
+
+/*buttons*/
+#wp_booking_process .action-button {
+  width: 150px;
+  background: #ffc107;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 20px 5px;
+  margin: 10px 5px;
+  font-size: 18px;
+  transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-out;
+  -moz-transition: .5s ease-out;
+  -o-transition: .5s ease-out;
+  border-radius: 8px;
+}
+
+#wp_booking_process .action-button:hover,
+#wp_booking_process .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #ffc107;
+  background: #dca709;
+}
+
+/*headings*/
+.fs-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 30px;
+}
+.fs-subtitle {
+  font-weight: normal;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  /*CSS counters to number the steps*/
+  counter-reset: step;
+}
+
+#progressbar li {
+  list-style-type: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 9px;
+  width: 10%;
+  /* float: left; */
+  display: inline-block;
+  position: relative;
+}
+
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 50px;
+  line-height: 31px;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 37px;
+  color: #333;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  margin: 0 auto 5px auto;
+  -webkit-transition: background 3s ease-out 0s;
+  -moz-transition: background 3s ease-out 0s;
+  transition: background 3s ease-out 0s;
+  transition: width 3s ease-out 0s;
+  -webkit-transition: width 3s ease-out 0s;     
+  -moz-transition: width 3s ease-out 0s;     
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: #e6e1e1;
+  position: absolute;
+  left: -50%;
+  top: 17px;
+  z-index: -1;
+  -webkit-transition: background 2s ease-out 0s;
+  -moz-transition: background 2s ease-out 0s;
+  transition: background 2s ease-out 0s;
+  transition: left 2s ease-out 0s;
+  -webkit-transition: left 2s ease-out 0s;
+  -moz-transition: left 2s ease-out 0s;
+}
+
+#progressbar li:first-child:after {
+  /*connector not needed before the first step*/
+  content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #ffc107;
+  color: white;
+}
+
+.help-block {
+  font-size: 0.8em;
+  color: #7c7c7c;
+  text-align: left;
+  margin-bottom: 0.5em;
+}
